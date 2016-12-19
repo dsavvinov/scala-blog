@@ -1,0 +1,39 @@
+@()
+
+<div class="modal fade" id="add-post-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Add post</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="post-title">Title:</label>
+                    <input type="text" class="form-control" id="post-title">
+                </div>
+
+                <div class="short-decription">
+                    <label for="post-short-description">Description:</label>
+                    <textarea class="form-control" id="post-short-description" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-content">Content:</label>
+                    <textarea class="form-control" id="post-content" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button"
+                class="btn btn-primary"
+                id="submit-post-btn"
+                data-toggle="modal"
+                data-target="#add-post-modal"
+                onclick="onSubmitBtnClick()">
+                    Submit
+                </button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>

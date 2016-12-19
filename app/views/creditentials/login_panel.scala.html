@@ -1,0 +1,61 @@
+@(maybeUser: Option[User])
+
+<ul class="nav navbar-nav navbar-right">
+
+@maybeUser match {
+    case Some(user) => {
+        <!-- generate greeting and logout button for the logged user -->
+        <li><p class="navbar-text">Hello, @{user.name}</p></li>
+        <li><a class="blog-nav-item" href="@routes.LoginController.logout()">Log out</a></li>
+    }
+    case None => {
+        <!-- generate invitation to log-in and dropdown menu -->
+        <li><p class="navbar-text">Sign in or register!</p></li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <b>Log in</b>
+                <span class="caret"></span>
+            </a>
+
+            <ul id="login-dropdown-menu" class="dropdown-menu">
+                <li>
+                    <div class="row">
+                        <div class="col-md-12">
+                                                    Login via
+                            <div class="social-buttons">
+                                <a href="#" class="btn btn-fb"><i class="fa fa-facebook">Facebook</i></a>
+                                <a href="#" class="btn btn-tw"><i class="fa fa-twitter">Twitter</i></a>
+                            </div>
+                            or
+                            <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="login-username-input">Username</label>
+                                    <input type="text" class="form-control" id="login-username-input" placeholder="Username" required name="login">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="sr-only" for="login-password-input">Password</label>
+                                    <input type="password" class="form-control" id="login-password-input" placeholder="Password" required name="password">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                </div>
+
+                                <div class="checkbox">
+                                    <label><input type="checkbox">Keep me logged in</label>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="bottom text-center">
+                            New here? <a href="/registration">Join Us!</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    }
+}
+
+</ul>

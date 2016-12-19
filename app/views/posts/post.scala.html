@@ -1,0 +1,12 @@
+@(post: Post, authorName: String)
+
+
+<H2> @{post.title} </H2>
+
+<H4> By @authorName on @{post.publishDate} </H4>
+
+<p> @{post.description} </p>
+
+<hr>
+
+@Html.apply(post.content)

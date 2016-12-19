@@ -1,0 +1,32 @@
+@(loggedUser: Option[User])
+
+@import creditentials.login_panel
+
+<div class="blog-masthead navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <!-- Header for better mobile navigation -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">@@dsavvinov</a>
+        </div>
+
+        <!-- Main navigation bar content (togglabe for mobile view) -->
+        <div class="blog-nav collapse navbar-collapse" id="main-navbar">
+            <!-- Main content -->
+            <ul class="nav navbar-nav">
+                <!-- Show `Add post` control only for root user -->
+                @if(loggedUser.exists { _.id == 1 } ) {
+                    <li><a class="blog-nav-item" data-toggle="modal" data-target="#add-post-modal">Add post</a></li>
+                }
+            </ul>
+
+            <!-- Login panel on navigation bar -->
+            @login_panel(loggedUser)
+        </div>
+    </div>
+</div>

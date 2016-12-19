@@ -1,0 +1,66 @@
+@*
+ * This template is called from the `index` template. This template
+ * handles the rendering of the page header and body tags. It takes
+ * two arguments, a `String` for the title of the page and an `Html`
+ * object to insert into the body of the page.
+ *@
+@(blogBody: Html, loggedUser: Option[User] = None)
+
+@import navigation.navigation_bar
+@import navigation.sidebar
+@import posts.submit_post
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+            <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Blog Template for Bootstrap</title>
+
+            <!-- Bootstrap core CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <script src='@routes.Assets.versioned("javascripts/jquery-3.1.1.js")'></script>
+        <script src='@routes.Assets.versioned("javascripts/post-submit-form.js")'></script>
+            <!-- Custom styles for this template -->
+        <link rel='stylesheet' type='text/css' href='@routes.Assets.versioned("stylesheets/blog.css")'>
+    </head>
+
+    <body>
+        <!-- Navigation bar -->
+        @navigation_bar(loggedUser)
+
+        <div class="container">
+
+            <div class="blog-header">
+                <h1 class="blog-title">@@dsavvinov blog</h1>
+                <p class="lead blog-description">Учебный проект по курсу Reactive Scala</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-8 blog-main">
+                    @blogBody
+                </div><!-- /.blog-main -->
+
+                @sidebar()
+
+            </div>  <!-- row -->
+
+            @submit_post()
+        </div><!-- /.container -->
+
+        <footer class="blog-footer">
+            <p>Powered by Scala, Play and Twitter Bootstrap.</p>
+            <p>
+                <a href="#">Back to top</a>
+            </p>
+        </footer>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </body>
+</html>
