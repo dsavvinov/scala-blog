@@ -71,7 +71,7 @@ class LoginController @Inject() (homeController: HomeController) extends Control
 
 }
 
-sealed class RegistrationResult
+sealed trait RegistrationResult
 case class Fail(message: String) extends RegistrationResult
 case class Success() extends RegistrationResult
 
