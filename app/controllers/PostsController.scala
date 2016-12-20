@@ -29,7 +29,7 @@ class PostsController @Inject() extends Controller {
   def showPost(id: Long) = Action.async { implicit request =>
     PostsDB.get(id) flatMap {
       case Some(post) =>
-        UsersDAO.get(post.id) map {
+        UsersDAO.get(post.author) map {
           case Some(user) =>
             Ok(views.html.main(views.html.posts.post(post, user.name)))
           case None => NotFound(<h1>User not found</h1>)
