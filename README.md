@@ -11,7 +11,7 @@ Address, db name, username and password can be corrected as usual, in `applicati
 ## Launching
 
 ```
-$ sbt run
+$ sbt runWithJS
 ```
 And wait, wait, wait...
 
